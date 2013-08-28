@@ -3,12 +3,12 @@ function roll(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 function moreDice() {
-    var diceLabel = $(document.createElement('input')).appendTo('body').attr({id: "label",type: "text",placeholder: "Enter label"});
-    var diceMax = $(document.createElement('input')).appendTo('body').attr({id: "maxVal",type: "text",placeholder: "Enter max value"});
-    var rolled = $(document.createElement('span')).appendTo('body').attr('id', 'rolled');
-    var set = $(document.createElement('button')).appendTo('body').attr('id', 'set').text("Set");
-    var roll = $(document.createElement('button')).appendTo('body').attr('id', 'roll').text("Roll");
-    var pageBreak = $(document.createElement('br')).appendTo('body');
+    var diceLabel = $(document.createElement('input')).appendTo('.jumbotron').attr({id: "label",type: "text",placeholder: "Enter label", class:"form-control"});
+    var diceMax = $(document.createElement('input')).appendTo('.jumbotron').attr({id: "maxVal",type: "text",placeholder: "Enter max value", class:"form-control"});
+    var rolled = $(document.createElement('span')).appendTo('.jumbotron').attr('id', 'rolled');
+    var set = $(document.createElement('button')).appendTo('.jumbotron').attr('id', 'set').attr('class', 'btn btn-default').text("Set");
+    var roll = $(document.createElement('button')).appendTo('.jumbotron').attr('id', 'roll').attr('class', 'btn btn-default').text("Roll");
+    var pageBreak = $(document.createElement('br')).appendTo('.jumbotron');
 }
 moreDice();
 $("#maxVal").on("keyup change", function(){
