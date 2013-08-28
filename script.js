@@ -1,4 +1,7 @@
-var maxValue, rolledNum;
+var maxValues = new Array();
+var rolledNums = new Array();
+var slot = 0;
+
 function roll(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
@@ -10,20 +13,21 @@ function moreDice() {
     var set = $(document.createElement('input')).appendTo('form').attr({id: 'set', class: 'btn btn-default', type: "button", value: "Set"});
     var roll = $(document.createElement('input')).appendTo('form').attr({id: 'roll', class: 'btn btn-default', type: "button", value: "Roll"});
     var pageBreak = $(document.createElement('br')).appendTo('form');
+    slot += 1;
 }
 moreDice();
 $("#maxVal").on("keyup change", function(){
-    maxValue = this.value;
+    maxValues[slot] = this.value;
 });
 $("#label").on("keyup change", function(){
     label = this.value;
 });
 $("#roll").click(function(){
-    rolledNum=roll(1, maxValue);
-    $("#rolled").text(rolledNum);
+    rolledNums[slot]=roll(1, maxValues[slot]);
+    $("#rolled").text(rolledNums[slot]);
 });
 $("#set").click(function(){
-    $("#maxVal").replaceWith("<span>d"+maxValue+"=</span>");
+    $("#maxVal").replaceWith("<span>d"+maxValues[slot]+"=</span>");
     $("#label").replaceWith("<span>"+label+": </span>");
     $(this).hide();
     $("#roll").show();
